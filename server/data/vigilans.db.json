@@ -4,18 +4,18 @@
       "id": "ws-vigilans-main",
       "name": "Vigilans Technologies Inc.",
       "logo": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&auto=format&fit=crop&q=80",
-      "description": "Next-generation Enterprise Workspace & Security Platform.",
-      "website": "https://vigilans.tech",
+      "description": "Next-generation Enterprise Workspace & Attendance Automation Platform",
+      "website": "https://vigilans.enterprise.io",
       "location": "San Francisco, CA",
       "owner_id": "usr-owner-olugbesan",
       "invite_code": "VIGILANS-2026",
-      "barcode_token": "VIGILANS-HQ-88291",
+      "barcode_token": "VIGILANS-HQ-81003",
       "office_start_time": "09:00",
       "late_threshold": "09:00",
       "automatic_clockout_time": "17:00",
       "timezone": "America/Los_Angeles",
-      "created_at": "2026-09-09T12:00:00.000Z",
-      "updated_at": "2026-09-09T12:00:00.000Z"
+      "created_at": "2026-09-07T19:45:36.320331+00:00",
+      "updated_at": "2026-09-07T19:45:36.320331+00:00"
     }
   ],
   "users": [
@@ -32,13 +32,435 @@
       "department": "Executive",
       "system_role": "owner",
       "status": "active",
-      "bio": "Founder & CEO of Vigilans Technologies.",
-      "created_at": "2026-09-09T12:00:00.000Z",
-      "updated_at": "2026-09-09T12:00:00.000Z"
+      "bio": "Workspace Founder & CEO",
+      "created_at": "2026-09-09T15:48:10.158287+00:00",
+      "updated_at": "2026-09-09T15:48:10.158287+00:00"
     }
   ],
   "attendance": [],
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "task-101",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Design Dark Mode Design Tokens & Icons",
+      "description": "Audit our design system tokens for high contrast accessibility and produce the new SVG glyph set for Vigilans 2.0.",
+      "priority": "high",
+      "status": "in_progress",
+      "due_date": "2026-09-15",
+      "created_by": null,
+      "assignees": [
+        "usr-staff-sarah",
+        "usr-staff-liam"
+      ],
+      "subtasks": [
+        {
+          "id": "sub-1",
+          "text": "Color contrast check (WCAG AAA)",
+          "completed": true
+        },
+        {
+          "id": "sub-2",
+          "text": "Figma component library publish",
+          "completed": true
+        },
+        {
+          "id": "sub-3",
+          "text": "Handoff meeting with frontend engineers",
+          "completed": false
+        }
+      ],
+      "comments": [
+        {
+          "id": "comm-1",
+          "text": "Contrast tests passed for 100% of core buttons!",
+          "author_id": "usr-staff-sarah",
+          "created_at": "2026-09-07T10:30:00.000Z"
+        }
+      ],
+      "created_at": "2026-09-07T08:43:12.783+00:00",
+      "updated_at": "2026-09-07T08:43:12.783+00:00"
+    },
+    {
+      "id": "task-103",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Q3 Enterprise Product Launch Campaign",
+      "description": "Prepare landing page copy, product demo videos, social announcements, and email drip sequences for enterprise clients.",
+      "priority": "high",
+      "status": "review",
+      "due_date": "2026-09-20",
+      "created_by": null,
+      "assignees": [
+        "usr-staff-chloe",
+        "usr-staff-daniel"
+      ],
+      "subtasks": [
+        {
+          "id": "sub-31",
+          "text": "Draft press release",
+          "completed": true
+        },
+        {
+          "id": "sub-32",
+          "text": "Record walkthrough screen recordings",
+          "completed": true
+        },
+        {
+          "id": "sub-33",
+          "text": "Executive sign-off from Marcus",
+          "completed": false
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-09-07T08:43:12.783+00:00",
+      "updated_at": "2026-09-07T08:43:12.783+00:00"
+    },
+    {
+      "id": "task-102",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Implement WebRTC Video Call Signaling",
+      "description": "Build direct peer connection negotiation for high fidelity meeting rooms and voice note recording audio buffer.",
+      "priority": "urgent",
+      "status": "in_progress",
+      "due_date": "2026-09-12",
+      "created_by": null,
+      "assignees": [
+        "usr-staff-alex",
+        "usr-staff-james"
+      ],
+      "subtasks": [
+        {
+          "id": "sub-21",
+          "text": "WebSocket signaling protocol",
+          "completed": true
+        },
+        {
+          "id": "sub-22",
+          "text": "Screen sharing stream capture API",
+          "completed": true
+        },
+        {
+          "id": "sub-23",
+          "text": "Audio mute/unmute indicators",
+          "completed": false
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-09-07T08:43:12.783+00:00",
+      "updated_at": "2026-09-07T08:43:12.783+00:00"
+    },
+    {
+      "id": "task-105",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Review Q3 Security Audit & Encryption Standards",
+      "description": "Ensure all media uploads, voice recordings, and employee records follow enterprise data isolation rules.",
+      "priority": "medium",
+      "status": "todo",
+      "due_date": "2026-09-28",
+      "created_by": null,
+      "assignees": [
+        "usr-staff-james"
+      ],
+      "subtasks": [
+        {
+          "id": "sub-51",
+          "text": "Verify workspace ID data boundaries",
+          "completed": false
+        },
+        {
+          "id": "sub-52",
+          "text": "File upload format and size validation",
+          "completed": false
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-09-07T08:43:12.783+00:00",
+      "updated_at": "2026-09-07T08:43:12.783+00:00"
+    },
+    {
+      "id": "task-104",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Automated Barcode Attendance Scanner Testing",
+      "description": "Verify camera scanning speed on mobile web browsers and validate duplicate clock-in prevention.",
+      "priority": "urgent",
+      "status": "completed",
+      "due_date": "2026-09-08",
+      "created_by": null,
+      "assignees": [
+        "usr-staff-maya",
+        "usr-staff-james"
+      ],
+      "subtasks": [
+        {
+          "id": "sub-41",
+          "text": "Camera permission prompt UX",
+          "completed": true
+        },
+        {
+          "id": "sub-42",
+          "text": "Instant token validation API",
+          "completed": true
+        },
+        {
+          "id": "sub-43",
+          "text": "Duplicate attendance rejection logic",
+          "completed": true
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-09-07T08:43:12.783+00:00",
+      "updated_at": "2026-09-07T08:43:12.783+00:00"
+    },
+    {
+      "id": "id-1788794314007-nhxpksy0f",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Complete UI Interaction Audit",
+      "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
+      "priority": "urgent",
+      "status": "todo",
+      "due_date": "Today",
+      "created_by": null,
+      "assignees": [],
+      "subtasks": [
+        {
+          "id": "sub-0-1788794314007",
+          "text": {
+            "id": "st-1",
+            "title": "Test sidebar tabs",
+            "completed": true
+          },
+          "completed": false
+        },
+        {
+          "id": "sub-1-1788794314007",
+          "text": {
+            "id": "st-2",
+            "title": "Test modals and drawers",
+            "completed": false
+          },
+          "completed": false
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-09-07T15:18:34.007+00:00",
+      "updated_at": "2026-09-07T15:18:34.007+00:00"
+    },
+    {
+      "id": "id-1788794346669-jbrih3jaq",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Complete UI Interaction Audit",
+      "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
+      "priority": "urgent",
+      "status": "todo",
+      "due_date": "Today",
+      "created_by": null,
+      "assignees": [],
+      "subtasks": [
+        {
+          "id": "sub-0-1788794346669",
+          "text": {
+            "id": "st-1",
+            "title": "Test sidebar tabs",
+            "completed": true
+          },
+          "completed": false
+        },
+        {
+          "id": "sub-1-1788794346669",
+          "text": {
+            "id": "st-2",
+            "title": "Test modals and drawers",
+            "completed": false
+          },
+          "completed": false
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-09-07T15:19:06.669+00:00",
+      "updated_at": "2026-09-07T15:19:06.669+00:00"
+    },
+    {
+      "id": "id-1788794540371-mz9l4wltk",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Complete UI Interaction Audit",
+      "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
+      "priority": "urgent",
+      "status": "in-progress",
+      "due_date": "Today",
+      "created_by": null,
+      "assignees": [],
+      "subtasks": [
+        {
+          "id": "st-1",
+          "title": "Test sidebar tabs",
+          "completed": true
+        },
+        {
+          "id": "st-2",
+          "title": "Test modals and drawers",
+          "completed": true
+        }
+      ],
+      "comments": [],
+      "created_at": "2026-09-07T15:22:20.371+00:00",
+      "updated_at": "2026-09-07T15:22:20.374+00:00"
+    },
+    {
+      "id": "id-1788794641834-p0acuyzgn",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Complete UI Interaction Audit",
+      "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
+      "priority": "urgent",
+      "status": "in-progress",
+      "due_date": "Today",
+      "created_by": null,
+      "assignees": [],
+      "subtasks": [
+        {
+          "id": "st-1",
+          "title": "Test sidebar tabs",
+          "completed": true
+        },
+        {
+          "id": "st-2",
+          "title": "Test modals and drawers",
+          "completed": true
+        }
+      ],
+      "comments": [
+        {
+          "id": "comm-1788794641856",
+          "text": "All buttons checked and verified!",
+          "author_id": "usr-owner-marcus",
+          "created_at": "2026-09-07T15:24:01.856Z",
+          "author_name": "Marcus Vance",
+          "author_avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80"
+        }
+      ],
+      "created_at": "2026-09-07T15:24:01.834+00:00",
+      "updated_at": "2026-09-07T15:24:01.856+00:00"
+    },
+    {
+      "id": "id-1788810154534-yufemx8in",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Complete UI Interaction Audit",
+      "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
+      "priority": "urgent",
+      "status": "in-progress",
+      "due_date": "Today",
+      "created_by": null,
+      "assignees": [],
+      "subtasks": [
+        {
+          "id": "st-1",
+          "title": "Test sidebar tabs",
+          "completed": true
+        },
+        {
+          "id": "st-2",
+          "title": "Test modals and drawers",
+          "completed": true
+        }
+      ],
+      "comments": [
+        {
+          "id": "comm-1788810154566",
+          "text": "All buttons checked and verified!",
+          "author_id": "usr-owner-marcus",
+          "created_at": "2026-09-07T19:42:34.566Z",
+          "author_name": "Marcus Vance",
+          "author_avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80"
+        }
+      ],
+      "created_at": "2026-09-07T19:42:34.535+00:00",
+      "updated_at": "2026-09-07T19:42:34.566+00:00"
+    },
+    {
+      "id": "id-1788810619281-hp2qxs67q",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Complete UI Interaction Audit",
+      "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
+      "priority": "urgent",
+      "status": "todo",
+      "due_date": "Today",
+      "created_by": null,
+      "assignees": [],
+      "subtasks": [
+        {
+          "id": "sub-0-1788810619281",
+          "text": {
+            "id": "st-1",
+            "title": "Test sidebar tabs",
+            "completed": true
+          },
+          "completed": false
+        },
+        {
+          "id": "sub-1-1788810619281",
+          "text": {
+            "id": "st-2",
+            "title": "Test modals and drawers",
+            "completed": false
+          },
+          "completed": false
+        }
+      ],
+      "comments": [
+        {
+          "id": "comm-1788810619312",
+          "text": "All buttons checked and verified!",
+          "author_id": "usr-owner-marcus",
+          "created_at": "2026-09-07T19:50:19.312Z",
+          "author_name": "Marcus Vance",
+          "author_avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80"
+        }
+      ],
+      "created_at": "2026-09-07T19:50:19.281+00:00",
+      "updated_at": "2026-09-07T19:50:19.282+00:00"
+    },
+    {
+      "id": "id-1788811263051-kcnwh50he",
+      "workspace_id": "ws-vigilans-main",
+      "title": "Complete UI Interaction Audit",
+      "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
+      "priority": "urgent",
+      "status": "todo",
+      "due_date": "Today",
+      "created_by": null,
+      "assignees": [],
+      "subtasks": [
+        {
+          "id": "sub-0-1788811263051",
+          "text": {
+            "id": "st-1",
+            "title": "Test sidebar tabs",
+            "completed": true
+          },
+          "completed": false
+        },
+        {
+          "id": "sub-1-1788811263051",
+          "text": {
+            "id": "st-2",
+            "title": "Test modals and drawers",
+            "completed": false
+          },
+          "completed": false
+        }
+      ],
+      "comments": [
+        {
+          "id": "comm-1788811263084",
+          "text": "All buttons checked and verified!",
+          "author_id": "usr-owner-marcus",
+          "created_at": "2026-09-07T20:01:03.084Z",
+          "author_name": "Marcus Vance",
+          "author_avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80"
+        }
+      ],
+      "created_at": "2026-09-07T20:01:03.051+00:00",
+      "updated_at": "2026-09-07T20:01:03.051+00:00"
+    }
+  ],
   "conversations": [
     {
       "id": "conv-general",
@@ -49,8 +471,8 @@
         "usr-owner-olugbesan"
       ],
       "last_message": "Welcome to Vigilans! Real-time messaging is live.",
-      "created_at": "2026-09-09T12:00:00.000Z",
-      "updated_at": "2026-09-09T12:00:00.000Z"
+      "created_at": "2026-09-07T19:45:36.320331+00:00",
+      "updated_at": "2026-09-07T20:01:03.107+00:00"
     }
   ],
   "messages": [
@@ -60,8 +482,9 @@
       "sender_id": "usr-owner-olugbesan",
       "content": "Welcome to Vigilans! You can register, sign in, and text the app here.",
       "message_type": "text",
+      "media_url": null,
       "duration": null,
-      "created_at": "2026-09-09T12:00:00.000Z"
+      "created_at": "2026-09-09T15:48:11.415323+00:00"
     }
   ],
   "meetings": [],
@@ -71,12 +494,372 @@
   "notifications": [],
   "audit_logs": [
     {
-      "id": "audit-init",
+      "id": "id-1788794313992-6lijz7cp5",
       "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-owner-olugbesan",
-      "action": "WORKSPACE_INITIALIZED",
-      "details": "Vigilans Workspace initialized by Owner Olugbesan.",
-      "created_at": "2026-09-09T12:00:00.000Z"
+      "user_id": null,
+      "action": "STAFF_CLOCKED_OUT",
+      "details": "Liam Miller clocked out. Working duration: 5h 49m.",
+      "created_at": "2026-09-07T15:18:33.992+00:00"
+    },
+    {
+      "id": "id-1788795189367-n9xvr0jz2",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_CLOCKED_IN_LATE",
+      "details": "Daniel Kim clocked in via barcode scanner (453 min late).",
+      "created_at": "2026-09-07T15:33:09.367+00:00"
+    },
+    {
+      "id": "id-1788770592784-r9rpcodt9",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "WORKSPACE_CREATED",
+      "details": "Company workspace \"Vigilans Technologies Inc.\" was created.",
+      "created_at": "2026-09-07T07:30:00+00:00"
+    },
+    {
+      "id": "id-1788770592784-io5zb7bw8",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "BARCODE_GENERATED",
+      "details": "Attendance barcode token VIGILANS-HQ-88291 configured with 09:00 AM start time.",
+      "created_at": "2026-09-07T07:45:00+00:00"
+    },
+    {
+      "id": "id-1788782463020-3nti8jwtl",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_CLOCKED_IN_LATE",
+      "details": "Marcus Vance clocked in via barcode scanner (241 min late).",
+      "created_at": "2026-09-07T12:01:03.02+00:00"
+    },
+    {
+      "id": "id-1788794313945-puhpdd7y7",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_ADDED",
+      "details": "Alex Rivera (Product Designer) was added by Marcus Vance.",
+      "created_at": "2026-09-07T15:18:33.945+00:00"
+    },
+    {
+      "id": "id-1788794314007-4kvxyatga",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "TASK_CREATED",
+      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority.",
+      "created_at": "2026-09-07T15:18:34.007+00:00"
+    },
+    {
+      "id": "id-1788794314049-sggs01mb3",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "ANNOUNCEMENT_POSTED",
+      "details": "Announcement \"System Operational Notification\" was broadcast to the company.",
+      "created_at": "2026-09-07T15:18:34.049+00:00"
+    },
+    {
+      "id": "id-1788794314066-k0mhlnn97",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "SETTINGS_CHANGED",
+      "details": "Company profile details were updated by Owner.",
+      "created_at": "2026-09-07T15:18:34.066+00:00"
+    },
+    {
+      "id": "id-1788794346629-igah9wmh8",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_ADDED",
+      "details": "Alex Rivera (Product Designer) was added by Marcus Vance.",
+      "created_at": "2026-09-07T15:19:06.629+00:00"
+    },
+    {
+      "id": "id-1788794346669-vhwvn1o19",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "TASK_CREATED",
+      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority.",
+      "created_at": "2026-09-07T15:19:06.669+00:00"
+    },
+    {
+      "id": "id-1788796724275-zaq34yteg",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_CLOCKED_OUT",
+      "details": "Sarah Jenkins clocked out. Working duration: 7h 6m.",
+      "created_at": "2026-09-07T15:58:44.275+00:00"
+    },
+    {
+      "id": "id-1788794346732-76dqewsvf",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "ANNOUNCEMENT_POSTED",
+      "details": "Announcement \"System Operational Notification\" was broadcast to the company.",
+      "created_at": "2026-09-07T15:19:06.732+00:00"
+    },
+    {
+      "id": "id-1788794346750-jjds8wr4b",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "SETTINGS_CHANGED",
+      "details": "Company profile details were updated by Owner.",
+      "created_at": "2026-09-07T15:19:06.75+00:00"
+    },
+    {
+      "id": "id-1788794540285-x8140yy6h",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_ADDED",
+      "details": "Alex Rivera (Product Designer) was added by Marcus Vance.",
+      "created_at": "2026-09-07T15:22:20.285+00:00"
+    },
+    {
+      "id": "id-1788794540290-bsgvuei38",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T15:22:20.29+00:00"
+    },
+    {
+      "id": "id-1788794540295-jq2r6godz",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T15:22:20.295+00:00"
+    },
+    {
+      "id": "id-1788794540371-ii7xkga5g",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "TASK_CREATED",
+      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority.",
+      "created_at": "2026-09-07T15:22:20.371+00:00"
+    },
+    {
+      "id": "id-1788794540424-tdtiaklf9",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "MEETING_SCHEDULED",
+      "details": "Meeting \"Weekly Executive Punctuality Sync\" scheduled for undefined.",
+      "created_at": "2026-09-07T15:22:20.424+00:00"
+    },
+    {
+      "id": "id-1788794540462-f83pcg7ea",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "ANNOUNCEMENT_POSTED",
+      "details": "Announcement \"System Operational Notification\" was broadcast to the company.",
+      "created_at": "2026-09-07T15:22:20.462+00:00"
+    },
+    {
+      "id": "id-1788794540489-dg11il2tb",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "SETTINGS_CHANGED",
+      "details": "Company profile details were updated by Owner.",
+      "created_at": "2026-09-07T15:22:20.489+00:00"
+    },
+    {
+      "id": "id-1788794540503-8zuolnuo6",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "BARCODE_TOKEN_REGENERATED",
+      "details": "Workspace barcode token regenerated: VIGILANS-HQ-51811",
+      "created_at": "2026-09-07T15:22:20.503+00:00"
+    },
+    {
+      "id": "id-1788794641758-sihekgetl",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_ADDED",
+      "details": "Alex Rivera (Product Designer) was added by Marcus Vance.",
+      "created_at": "2026-09-07T15:24:01.758+00:00"
+    },
+    {
+      "id": "id-1788794641772-5d11f3oin",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T15:24:01.772+00:00"
+    },
+    {
+      "id": "id-1788794641777-zghwwm2f1",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T15:24:01.777+00:00"
+    },
+    {
+      "id": "id-1788794641834-y8v9o1gwh",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "TASK_CREATED",
+      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority.",
+      "created_at": "2026-09-07T15:24:01.834+00:00"
+    },
+    {
+      "id": "id-1788794641912-gph64bfd9",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "MEETING_SCHEDULED",
+      "details": "Meeting \"Weekly Executive Punctuality Sync\" scheduled for undefined.",
+      "created_at": "2026-09-07T15:24:01.912+00:00"
+    },
+    {
+      "id": "id-1788794641944-o6ecqrhrf",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "ANNOUNCEMENT_POSTED",
+      "details": "Announcement \"System Operational Notification\" was broadcast to the company.",
+      "created_at": "2026-09-07T15:24:01.944+00:00"
+    },
+    {
+      "id": "id-1788794641964-3aub8y3pe",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "SETTINGS_CHANGED",
+      "details": "Company profile details were updated by Owner.",
+      "created_at": "2026-09-07T15:24:01.964+00:00"
+    },
+    {
+      "id": "id-1788794641976-peojoyjlw",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "BARCODE_TOKEN_REGENERATED",
+      "details": "Workspace barcode token regenerated: VIGILANS-HQ-78095",
+      "created_at": "2026-09-07T15:24:01.976+00:00"
+    },
+    {
+      "id": "id-1788810154447-m2l3cuojd",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_ADDED",
+      "details": "Alex Rivera (Product Designer) was added by Marcus Vance.",
+      "created_at": "2026-09-07T19:42:34.447+00:00"
+    },
+    {
+      "id": "id-1788810154463-ggdjotppk",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T19:42:34.463+00:00"
+    },
+    {
+      "id": "id-1788810154468-iurf93l36",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T19:42:34.468+00:00"
+    },
+    {
+      "id": "id-1788810154535-ua8wz4yvk",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "TASK_CREATED",
+      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority.",
+      "created_at": "2026-09-07T19:42:34.535+00:00"
+    },
+    {
+      "id": "id-1788810154613-w6v5bnydz",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "MEETING_SCHEDULED",
+      "details": "Meeting \"Weekly Executive Punctuality Sync\" scheduled for undefined.",
+      "created_at": "2026-09-07T19:42:34.613+00:00"
+    },
+    {
+      "id": "id-1788810154649-edmlh8bug",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "ANNOUNCEMENT_POSTED",
+      "details": "Announcement \"System Operational Notification\" was broadcast to the company.",
+      "created_at": "2026-09-07T19:42:34.649+00:00"
+    },
+    {
+      "id": "id-1788810154660-dcsx6ehej",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "SETTINGS_CHANGED",
+      "details": "Company profile and attendance settings were updated.",
+      "created_at": "2026-09-07T19:42:34.66+00:00"
+    },
+    {
+      "id": "id-1788810154676-w5yrxglzi",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "BARCODE_TOKEN_REGENERATED",
+      "details": "Workspace barcode token regenerated: VIGILANS-HQ-80075",
+      "created_at": "2026-09-07T19:42:34.676+00:00"
+    },
+    {
+      "id": "id-1788811263004-vqkuywo1z",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T20:01:03.004+00:00"
+    },
+    {
+      "id": "id-1788811263130-dek94oep1",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "MEETING_SCHEDULED",
+      "details": "Meeting \"Weekly Executive Punctuality Sync\" scheduled for undefined.",
+      "created_at": "2026-09-07T20:01:03.13+00:00"
+    },
+    {
+      "id": "id-1788811263052-kzl8njmg6",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "TASK_CREATED",
+      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority.",
+      "created_at": "2026-09-07T20:01:03.052+00:00"
+    },
+    {
+      "id": "id-1788811263008-x21rke0na",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T20:01:03.008+00:00"
+    },
+    {
+      "id": "id-1788811263170-y0kw8mrpl",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "ANNOUNCEMENT_POSTED",
+      "details": "Announcement \"System Operational Notification\" was broadcast to the company.",
+      "created_at": "2026-09-07T20:01:03.17+00:00"
+    },
+    {
+      "id": "id-1788811262988-8a00whwh4",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "STAFF_ADDED",
+      "details": "Alex Rivera (Product Designer) was added by Marcus Vance.",
+      "created_at": "2026-09-07T20:01:02.988+00:00"
+    },
+    {
+      "id": "id-1788811263209-qq21d8bkw",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "BARCODE_TOKEN_REGENERATED",
+      "details": "Workspace barcode token regenerated: VIGILANS-HQ-81003",
+      "created_at": "2026-09-07T20:01:03.209+00:00"
+    },
+    {
+      "id": "id-1788811263201-yi4786jbb",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": null,
+      "action": "SETTINGS_CHANGED",
+      "details": "Company profile and attendance settings were updated.",
+      "created_at": "2026-09-07T20:01:03.201+00:00"
     }
   ]
 }

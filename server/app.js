@@ -27,9 +27,9 @@ app.use(cors());
 
 // Vercel serverless request body and URL normalization
 app.use((req, res, next) => {
-  // If Vercel or proxy sent x-forwarded-uri, normalize req.url
-  const forwarded = req.headers['x-forwarded-uri'] || req.headers['x-matched-path'];
-  if (forwarded && forwarded.startsWith('/api') && !req.url.startsWith('/api')) {
+  // If Vercel or proxy sent original URI in x-forwarded-uri, normalize req.url only if needed
+  const forwarded = req.headers['x-forwarded-uri'];
+  if (forwarded && forwarded.startsWith('/api') && !forwarded.includes('index.js') && !req.url.startsWith('/api')) {
     req.url = forwarded;
   }
 

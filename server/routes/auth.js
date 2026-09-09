@@ -1,5 +1,6 @@
 import express from 'express';
 import { db } from '../db/database.js';
+import { supabase, isSupabaseConfigured } from '../db/supabase.js';
 import { getUserIdFromHeader } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -12,30 +13,45 @@ export function sanitizeUser(user) {
 }
 
 // 1. Owner Registration + Company Workspace Creation
-router.post('/register-owner', (req, res) => {
+router.post('/register-owner', async (req, res) => {
   try {
     const {
       first_name,
+      firstName,
       last_name,
+      lastName,
       email,
       phone,
       password,
       company_name,
+      companyName,
       company_logo,
+      companyLogo,
       company_description,
       company_website,
       company_location,
       profile_picture,
+      profilePicture,
     } = req.body || {};
 
-    if (!first_name || !last_name || !email || !password || !company_name) {
+    const fName = first_name || firstName;
+    const lName = last_name || lastName;
+    const cName = company_name || companyName;
+
+    if (!fName || !lName || !email || !password || !cName) {
       return res.status(400).json({ error: 'Please fill in all required fields.' });
     }
 
     const cleanEmail = String(email).trim().toLowerCase();
 
-    // Check unique email safely
-    const existing = db.findOne('users', u => u && u.email && u.email.toLowerCase() === cleanEmail);
+    // Check unique email safely in memory and Supabase
+    let existing = db.findOne('users', u => u && u.email && u.email.toLowerCase() === cleanEmail);
+    if (!existing && isSupabaseConfigured && supabase) {
+      try {
+        const { data } = await supabase.from('users').select('id').ilike('email', cleanEmail).maybeSingle();
+        if (data) existing = data;
+      } catch (e) {}
+    }
     if (existing) {
       return res.status(400).json({ error: 'An account with this email already exists.' });
     }
@@ -105,11 +121,11 @@ router.post('/register-owner', (req, res) => {
 });
 
 // 2. Staff Registration (requires valid workspace invite code)
-router.post('/register-staff', (req, res) => {
+router.post('/register-staff', async (req, res) => {
   try {
     const body = req.body || {};
-    const firstName = body.first_name || (body.fullName ? body.fullName.trim().split(' ')[0] : '');
-    const lastName = body.last_name || (body.fullName ? body.fullName.trim().split(' ').slice(1).join(' ') || 'Staff' : '');
+    const firstName = body.first_name || body.firstName || (body.fullName ? body.fullName.trim().split(' ')[0] : '');
+    const lastName = body.last_name || body.lastName || (body.fullName ? body.fullName.trim().split(' ').slice(1).join(' ') || 'Staff' : '');
     const email = body.email;
     const password = body.password;
     const roleTitle = body.role_title || body.roleTitle;
@@ -125,14 +141,30 @@ router.post('/register-staff', (req, res) => {
     const cleanCode = String(inviteCode).toUpperCase().trim();
     const cleanEmail = String(email).toLowerCase().trim();
 
-    // Verify workspace by invite code
-    const workspace = db.findOne('workspaces', w => w && w.invite_code && w.invite_code.toUpperCase().trim() === cleanCode);
+    // Verify workspace by invite code (check memory then Supabase)
+    let workspace = db.findOne('workspaces', w => w && w.invite_code && w.invite_code.toUpperCase().trim() === cleanCode);
+    if (!workspace && isSupabaseConfigured && supabase) {
+      try {
+        const { data } = await supabase.from('workspaces').select('*').ilike('invite_code', cleanCode).maybeSingle();
+        if (data) {
+          workspace = data;
+          db.insert('workspaces', data);
+        }
+      } catch (e) {}
+    }
+
     if (!workspace) {
       return res.status(404).json({ error: 'Invalid workspace invitation code. Please verify with your Owner/Admin.' });
     }
 
-    // Check unique email
-    const existing = db.findOne('users', u => u && u.email && u.email.toLowerCase().trim() === cleanEmail);
+    // Check unique email in memory and Supabase
+    let existing = db.findOne('users', u => u && u.email && u.email.toLowerCase().trim() === cleanEmail);
+    if (!existing && isSupabaseConfigured && supabase) {
+      try {
+        const { data } = await supabase.from('users').select('id').ilike('email', cleanEmail).maybeSingle();
+        if (data) existing = data;
+      } catch (e) {}
+    }
     if (existing) {
       return res.status(400).json({ error: 'An account with this email already exists.' });
     }
@@ -144,7 +176,7 @@ router.post('/register-staff', (req, res) => {
       last_name: String(lastName).trim(),
       email: cleanEmail,
       phone,
-      password: String(password),
+      password: String(password).trim(),
       profile_picture: profilePicture,
       role_title: String(roleTitle).trim(),
       department,
@@ -182,7 +214,7 @@ router.post('/register-staff', (req, res) => {
 });
 
 // 3. Login
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body || {};
     if (!email || !password) {
@@ -190,9 +222,22 @@ router.post('/login', (req, res) => {
     }
 
     const cleanEmail = String(email).toLowerCase().trim();
-    const user = db.findOne('users', u => u && u.email && u.email.toLowerCase().trim() === cleanEmail);
+    let user = db.findOne('users', u => u && u.email && u.email.toLowerCase().trim() === cleanEmail);
     
-    if (!user || user.password !== String(password)) {
+    // Check Supabase directly if user is not found in memory (e.g. cold start)
+    if (!user && isSupabaseConfigured && supabase) {
+      try {
+        const { data } = await supabase.from('users').select('*').ilike('email', cleanEmail).maybeSingle();
+        if (data) {
+          user = data;
+          db.insert('users', data);
+        }
+      } catch (err) {
+        console.warn('Supabase fallback query for login failed:', err.message);
+      }
+    }
+
+    if (!user || String(user.password).trim() !== String(password).trim()) {
       return res.status(401).json({ error: 'Invalid email or password credentials.' });
     }
 
@@ -200,7 +245,18 @@ router.post('/login', (req, res) => {
       return res.status(403).json({ error: 'Your account has been suspended by an administrator. Please contact support.' });
     }
 
-    const workspace = db.findById('workspaces', user.workspace_id) || {
+    let workspace = db.findById('workspaces', user.workspace_id);
+    if (!workspace && isSupabaseConfigured && supabase) {
+      try {
+        const { data } = await supabase.from('workspaces').select('*').eq('id', user.workspace_id).maybeSingle();
+        if (data) {
+          workspace = data;
+          db.insert('workspaces', data);
+        }
+      } catch (e) {}
+    }
+
+    workspace = workspace || {
       id: user.workspace_id || 'ws-vigilans-main',
       name: 'Vigilans Technologies Inc.'
     };
@@ -217,7 +273,7 @@ router.post('/login', (req, res) => {
 });
 
 // 4. Current User Session Verification
-router.get('/me', (req, res) => {
+router.get('/me', async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -225,12 +281,34 @@ router.get('/me', (req, res) => {
     }
 
     const userId = getUserIdFromHeader(authHeader);
-    const user = userId ? db.findById('users', userId) : null;
+    let user = userId ? db.findById('users', userId) : null;
+    
+    if (!user && userId && isSupabaseConfigured && supabase) {
+      try {
+        const { data } = await supabase.from('users').select('*').eq('id', userId).maybeSingle();
+        if (data) {
+          user = data;
+          db.insert('users', data);
+        }
+      } catch (e) {}
+    }
+
     if (!user) {
       return res.status(401).json({ error: 'Invalid session token.' });
     }
 
-    const workspace = db.findById('workspaces', user.workspace_id) || {
+    let workspace = db.findById('workspaces', user.workspace_id);
+    if (!workspace && isSupabaseConfigured && supabase) {
+      try {
+        const { data } = await supabase.from('workspaces').select('*').eq('id', user.workspace_id).maybeSingle();
+        if (data) {
+          workspace = data;
+          db.insert('workspaces', data);
+        }
+      } catch (e) {}
+    }
+
+    workspace = workspace || {
       id: user.workspace_id,
       name: 'Vigilans Workspace'
     };

@@ -27,8 +27,16 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || '';
+const supabaseUrl = 
+  process.env.SUPABASE_URL || 
+  process.env.VITE_SUPABASE_URL || 
+  'https://vwnfdoimaxokrreytngb.supabase.co';
+
+const supabaseKey = 
+  process.env.SUPABASE_SERVICE_ROLE_KEY || 
+  process.env.SUPABASE_ANON_KEY || 
+  process.env.VITE_SUPABASE_ANON_KEY || 
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3bmZkb2ltYXhva3JyZXl0bmdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg4MDQ0NTEsImV4cCI6MjEwNDM4MDQ1MX0.lGb4LRv5GJ1zlCbh83fQZmJpl3bUkRl9eECOKCd1qeA';
 
 export const isSupabaseConfigured = Boolean(
   supabaseUrl && 
