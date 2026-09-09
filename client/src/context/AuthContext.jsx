@@ -61,6 +61,10 @@ export const AuthProvider = ({ children }) => {
       body: JSON.stringify({ email, password }),
     });
 
+    if (!data || !data.token) {
+      throw new Error(data?.error || 'Login failed. Please check your credentials.');
+    }
+
     localStorage.setItem('vigilans_token', data.token);
     setToken(data.token);
     setUser(normalizeUser(data.user, data.workspace));
@@ -74,6 +78,10 @@ export const AuthProvider = ({ children }) => {
       method: 'POST',
       body: JSON.stringify(formData),
     });
+
+    if (!data || !data.token) {
+      throw new Error(data?.error || 'Registration failed. Please try again.');
+    }
 
     localStorage.setItem('vigilans_token', data.token);
     setToken(data.token);
@@ -100,6 +108,10 @@ export const AuthProvider = ({ children }) => {
       method: 'POST',
       body: JSON.stringify(payload),
     });
+
+    if (!data || !data.token) {
+      throw new Error(data?.error || 'Staff registration failed. Please check your invitation code.');
+    }
 
     localStorage.setItem('vigilans_token', data.token);
     setToken(data.token);

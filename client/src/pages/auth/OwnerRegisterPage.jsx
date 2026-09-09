@@ -3,7 +3,7 @@ import { Shield, Building2, User, Mail, Lock, Phone, MapPin, Globe, ArrowLeft } 
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 
-export const OwnerRegisterPage = ({ onNavigateToLogin, onSwitchToLogin }) => {
+export const OwnerRegisterPage = ({ onNavigateToLogin, onSwitchToLogin, onSwitchToStaff }) => {
   const { registerOwner } = useAuth();
   const { success, error } = useToast();
 
@@ -29,12 +29,27 @@ export const OwnerRegisterPage = ({ onNavigateToLogin, onSwitchToLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.first_name.trim() || !formData.last_name.trim() || !formData.email.trim() || !formData.password || !formData.company_name.trim()) {
+      error('Please fill in all required fields.');
+      return;
+    }
+    if (formData.password.length < 6) {
+      error('Password must be at least 6 characters.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      await registerOwner(formData);
+      await registerOwner({
+        ...formData,
+        first_name: formData.first_name.trim(),
+        last_name: formData.last_name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        company_name: formData.company_name.trim(),
+      });
       success('Workspace created successfully! Welcome to Vigilans.');
     } catch (err) {
-      error(err.message);
+      error(err.message || 'Registration failed. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -178,11 +193,35 @@ export const OwnerRegisterPage = ({ onNavigateToLogin, onSwitchToLogin }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm transition-all shadow-lg shadow-indigo-600/30 active:scale-[0.98] disabled:opacity-50 mt-4"
+              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm transition-all shadow-lg shadow-indigo-600/30 active:scale-[0.98] disabled:opacity-50 mt-4 cursor-pointer"
             >
               {isSubmitting ? 'Creating Company Workspace...' : 'Create & Launch Workspace'}
             </button>
           </form>
+
+          {/* Already have an account / Navigation Footer */}
+          <div className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+            <div className="flex items-center gap-1.5">
+              <span>Already have an account?</span>
+              <button
+                type="button"
+                onClick={handleBackToLogin}
+                className="text-indigo-400 hover:text-indigo-300 font-semibold cursor-pointer underline-offset-2 hover:underline transition-colors"
+              >
+                Sign In
+              </button>
+            </div>
+            {onSwitchToStaff && (
+              <button
+                type="button"
+                onClick={onSwitchToStaff}
+                className="text-slate-400 hover:text-slate-200 cursor-pointer flex items-center gap-1 transition-colors"
+              >
+                <span>Join via Staff Invite</span>
+                <span>&rarr;</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

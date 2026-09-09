@@ -65,6 +65,7 @@ function MainApp() {
       return (
         <StaffRegisterPage 
           onSwitchToLogin={() => setAuthView('login')} 
+          onSwitchToOwner={() => setAuthView('register-owner')} 
         />
       );
     }

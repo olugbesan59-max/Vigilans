@@ -21,6 +21,11 @@ export async function apiRequest(endpoint, options = {}) {
       headers,
     });
 
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('text/html')) {
+      throw new Error('Server returned HTML instead of API data. Please check your backend connection.');
+    }
+
     const data = await response.json().catch(() => null);
 
     if (!response.ok) {
@@ -28,8 +33,15 @@ export async function apiRequest(endpoint, options = {}) {
       throw new Error(errorMsg);
     }
 
+    if (data === null && response.status !== 204) {
+      throw new Error('Received an empty response from server.');
+    }
+
     return data;
   } catch (err) {
+    if (err.message === 'Failed to fetch' || err.name === 'TypeError') {
+      throw new Error('Unable to connect to Vigilans backend. Please verify your server is running.');
+    }
     throw err;
   }
 }

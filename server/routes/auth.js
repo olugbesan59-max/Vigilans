@@ -143,9 +143,10 @@ router.post('/register-staff', (req, res) => {
   // Add staff to General Group chat
   const generalConv = db.findOne('conversations', c => c.workspace_id === workspace.id && c.type === 'group');
   if (generalConv) {
-    if (!generalConv.participant_ids.includes(user.id)) {
-      generalConv.participant_ids.push(user.id);
-      db.update('conversations', generalConv.id, { participant_ids: generalConv.participant_ids });
+    const pIds = Array.isArray(generalConv.participant_ids) ? [...generalConv.participant_ids] : [];
+    if (!pIds.includes(user.id)) {
+      pIds.push(user.id);
+      db.update('conversations', generalConv.id, { participant_ids: pIds });
     }
   }
 

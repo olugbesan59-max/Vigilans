@@ -3,9 +3,11 @@ import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 import { ShieldCheck, UserPlus, ArrowLeft, Building2, Briefcase, Mail, Lock, User, Phone, CheckCircle2 } from 'lucide-react';
 
-export default function StaffRegisterPage({ onSwitchToLogin }) {
+export default function StaffRegisterPage({ onSwitchToLogin, onNavigateToLogin, onSwitchToOwner }) {
   const { registerStaff } = useAuth();
   const { addToast } = useToast();
+
+  const handleBackToLogin = onSwitchToLogin || onNavigateToLogin;
   
   const [formData, setFormData] = useState({
     fullName: '',
@@ -20,14 +22,25 @@ export default function StaffRegisterPage({ onSwitchToLogin }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.email || !formData.password || !formData.roleTitle || !formData.inviteCode) {
+    if (!formData.fullName.trim() || !formData.email.trim() || !formData.password || !formData.roleTitle.trim() || !formData.inviteCode.trim()) {
       addToast('Please complete all required fields', 'error');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      addToast('Password must be at least 6 characters long', 'error');
       return;
     }
     
     setLoading(true);
     try {
-      await registerStaff(formData);
+      await registerStaff({
+        ...formData,
+        fullName: formData.fullName.trim(),
+        email: formData.email.trim().toLowerCase(),
+        roleTitle: formData.roleTitle.trim(),
+        inviteCode: formData.inviteCode.trim().toUpperCase(),
+      });
       addToast('Welcome to the workspace! You are now logged in as Staff.', 'success');
     } catch (err) {
       addToast(err.message || 'Staff registration failed', 'error');
@@ -42,7 +55,15 @@ export default function StaffRegisterPage({ onSwitchToLogin }) {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4 text-center">
+        <button
+          type="button"
+          onClick={handleBackToLogin}
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white mb-4 transition-colors cursor-pointer"
+        >
+          <ArrowLeft size={14} />
+          <span>Back to Sign In</span>
+        </button>
         <div className="flex items-center justify-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-500 flex items-center justify-center text-white shadow-xl shadow-indigo-500/25">
             <ShieldCheck className="w-7 h-7" />
@@ -210,15 +231,27 @@ export default function StaffRegisterPage({ onSwitchToLogin }) {
             </div>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-            <span>Already have an account?</span>
-            <button
-              onClick={onSwitchToLogin}
-              className="inline-flex items-center gap-1.5 text-indigo-400 hover:text-indigo-300 font-medium transition"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              Back to Sign In
-            </button>
+          <div className="mt-6 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+            <div className="flex items-center gap-1.5">
+              <span>Already have an account?</span>
+              <button
+                type="button"
+                onClick={handleBackToLogin}
+                className="inline-flex items-center gap-1.5 text-indigo-400 hover:text-indigo-300 font-semibold transition cursor-pointer underline-offset-2 hover:underline"
+              >
+                Sign In
+              </button>
+            </div>
+            {onSwitchToOwner && (
+              <button
+                type="button"
+                onClick={onSwitchToOwner}
+                className="text-slate-400 hover:text-slate-200 cursor-pointer flex items-center gap-1 transition-colors"
+              >
+                <span>Create Company Workspace</span>
+                <span>&rarr;</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

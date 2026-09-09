@@ -5,12 +5,18 @@ import { supabase, isSupabaseConfigured } from './supabase.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DB_FILE = path.join(__dirname, '..', 'data', 'vigilans.db.json');
+const DEFAULT_DB_FILE = path.join(__dirname, '..', 'data', 'vigilans.db.json');
+const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const DB_FILE = isVercel ? path.join('/tmp', 'vigilans.db.json') : DEFAULT_DB_FILE;
 
 // Ensure data directory exists
 const dataDir = path.dirname(DB_FILE);
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
+try {
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+  }
+} catch (e) {
+  // Directory might already exist or be restricted
 }
 
 // Allowed columns matching Supabase schema exactly to prevent cache errors
@@ -82,6 +88,15 @@ class Database {
         const raw = fs.readFileSync(DB_FILE, 'utf8');
         const parsed = JSON.parse(raw);
         this.tables = { ...this.tables, ...parsed };
+      } else if (fs.existsSync(DEFAULT_DB_FILE)) {
+        const raw = fs.readFileSync(DEFAULT_DB_FILE, 'utf8');
+        const parsed = JSON.parse(raw);
+        this.tables = { ...this.tables, ...parsed };
+        if (isVercel) {
+          try {
+            fs.writeFileSync(DB_FILE, raw, 'utf8');
+          } catch (e) {}
+        }
       }
     } catch (err) {
       console.error('Failed to load database file, starting clean:', err);
