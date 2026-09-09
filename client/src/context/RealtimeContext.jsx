@@ -22,8 +22,8 @@ export const RealtimeProvider = ({ children }) => {
     }
 
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    // When in dev mode with Vite proxy, or direct port 3001
-    const wsUrl = `${protocol}//${window.location.hostname}:3001/ws`;
+    // Use configured VITE_WS_URL or fallback to local port 3001
+    const wsUrl = import.meta.env.VITE_WS_URL || `${protocol}//${window.location.hostname}:3001/ws`;
 
     let ws = null;
     try {

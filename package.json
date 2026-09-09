@@ -1,0 +1,9 @@
+{
+  "name": "vigilans-workspace",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix client run build",
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server start"
+  }
+}
