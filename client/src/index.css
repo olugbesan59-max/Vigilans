@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  html, body, #root {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #020617; /* slate-950 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent mobile tap highlight gray box */
+  button, a, input, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom SaaS sleek scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+
+/* Pulse radar for camera scanning overlay */
+@keyframes scan-line {
+  0% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(180px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.8; }
+}
+
+.scanner-laser {
+  animation: scan-line 2.2s ease-in-out infinite;
+}
+
+/* Audio waveform bars animation */
+@keyframes audio-bounce-1 {
+  0%, 100% { height: 6px; }
+  50% { height: 20px; }
+}
+@keyframes audio-bounce-2 {
+  0%, 100% { height: 16px; }
+  50% { height: 8px; }
+}
+@keyframes audio-bounce-3 {
+  0%, 100% { height: 10px; }
+  50% { height: 24px; }
+}
+
+.voice-wave-1 { animation: audio-bounce-1 0.7s ease-in-out infinite; }
+.voice-wave-2 { animation: audio-bounce-2 0.6s ease-in-out infinite 0.15s; }
+.voice-wave-3 { animation: audio-bounce-3 0.8s ease-in-out infinite 0.3s; }
