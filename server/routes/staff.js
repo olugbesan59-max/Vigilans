@@ -57,7 +57,8 @@ router.post('/', (req, res) => {
     return res.status(400).json({ error: 'First name, last name, email, and role title are required.' });
   }
 
-  const existing = db.findOne('users', u => u.email.toLowerCase() === email.toLowerCase());
+  const cleanEmail = String(email).toLowerCase().trim();
+  const existing = db.findOne('users', u => u && u.email && u.email.toLowerCase().trim() === cleanEmail);
   if (existing) {
     return res.status(400).json({ error: 'An employee with this email already exists.' });
   }

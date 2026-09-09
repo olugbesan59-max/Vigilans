@@ -15,7 +15,7 @@
       "automatic_clockout_time": "17:00",
       "timezone": "America/Los_Angeles",
       "created_at": "2026-09-07T19:45:36.320331+00:00",
-      "updated_at": "2026-09-07T20:01:03.209Z"
+      "updated_at": "2026-09-07T19:45:36.320331+00:00"
     }
   ],
   "users": [
@@ -157,8 +157,6 @@
     },
     {
       "id": "id-1788811262988-zxms7pqte",
-      "created_at": "2026-09-07T20:01:02.988Z",
-      "updated_at": "2026-09-07T20:01:03.008Z",
       "workspace_id": "ws-vigilans-main",
       "first_name": "Alex",
       "last_name": "Rivera",
@@ -169,7 +167,10 @@
       "role_title": "Lead Product Designer",
       "department": "Design",
       "system_role": "staff",
-      "status": "active"
+      "status": "suspended",
+      "bio": "",
+      "created_at": "2026-09-07T20:01:02.988+00:00",
+      "updated_at": "2026-09-07T20:01:02.988+00:00"
     }
   ],
   "attendance": [
@@ -635,38 +636,46 @@
     },
     {
       "id": "id-1788811263051-kcnwh50he",
-      "created_at": "2026-09-07T20:01:03.051Z",
-      "updated_at": "2026-09-07T20:01:03.084Z",
       "workspace_id": "ws-vigilans-main",
       "title": "Complete UI Interaction Audit",
       "description": "Ensure every button, tab, dropdown, and toggle functions flawlessly.",
       "priority": "urgent",
-      "status": "in-progress",
+      "status": "todo",
       "due_date": "Today",
       "created_by": "usr-owner-marcus",
       "assignees": [],
       "subtasks": [
         {
-          "id": "st-1",
-          "title": "Test sidebar tabs",
-          "completed": true
+          "id": "sub-0-1788811263051",
+          "text": {
+            "id": "st-1",
+            "title": "Test sidebar tabs",
+            "completed": true
+          },
+          "completed": false
         },
         {
-          "id": "st-2",
-          "title": "Test modals and drawers",
-          "completed": true
+          "id": "sub-1-1788811263051",
+          "text": {
+            "id": "st-2",
+            "title": "Test modals and drawers",
+            "completed": false
+          },
+          "completed": false
         }
       ],
       "comments": [
         {
           "id": "comm-1788811263084",
-          "author_id": "usr-owner-marcus",
-          "author_name": "Marcus Vance",
-          "author_avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80",
           "text": "All buttons checked and verified!",
-          "created_at": "2026-09-07T20:01:03.084Z"
+          "author_id": "usr-owner-marcus",
+          "created_at": "2026-09-07T20:01:03.084Z",
+          "author_name": "Marcus Vance",
+          "author_avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80"
         }
-      ]
+      ],
+      "created_at": "2026-09-07T20:01:03.051+00:00",
+      "updated_at": "2026-09-07T20:01:03.051+00:00"
     }
   ],
   "conversations": [
@@ -689,7 +698,7 @@
       ],
       "last_message": "Testing automated button click flow",
       "created_at": "2026-09-07T19:45:36.320331+00:00",
-      "updated_at": "2026-09-07T20:01:03.107Z"
+      "updated_at": "2026-09-07T20:01:03.107+00:00"
     }
   ],
   "messages": [
@@ -702,6 +711,16 @@
       "media_url": null,
       "duration": null,
       "created_at": "2026-09-07T19:45:36.320331+00:00"
+    },
+    {
+      "id": "id-1788811263106-1skds9xlv",
+      "conversation_id": "conv-general",
+      "sender_id": "usr-owner-marcus",
+      "content": "Testing automated button click flow",
+      "message_type": "text",
+      "media_url": null,
+      "duration": null,
+      "created_at": "2026-09-07T20:01:03.106+00:00"
     }
   ],
   "meetings": [
@@ -891,8 +910,6 @@
     },
     {
       "id": "meet-1788811263129",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
       "workspace_id": "ws-vigilans-main",
       "title": "Weekly Executive Punctuality Sync",
       "description": "",
@@ -914,25 +931,12 @@
         "id-1788811262988-zxms7pqte"
       ],
       "agenda": "Review barcode timestamps and lateness reports",
-      "status": "scheduled"
+      "status": "scheduled",
+      "created_at": "2026-09-07T20:01:03.13+00:00",
+      "updated_at": "2026-09-07T20:01:03.13+00:00"
     }
   ],
   "feed_posts": [
-    {
-      "id": "post-sample-1",
-      "workspace_id": "ws-vigilans-main",
-      "author_id": "usr-owner-marcus",
-      "content": "Great work team on achieving 100% on-time attendance this morning!",
-      "media_url": null,
-      "media_type": null,
-      "likes": [
-        "usr-admin-elena",
-        "usr-staff-sarah",
-        "usr-owner-marcus"
-      ],
-      "created_at": "2026-09-07T19:45:36.320331+00:00",
-      "updated_at": "2026-09-07T20:04:28.059Z"
-    },
     {
       "id": "id-1788810619413-ztcbc6ots",
       "workspace_id": "ws-vigilans-main",
@@ -948,8 +952,6 @@
     },
     {
       "id": "id-1788811263146-rr9f7st85",
-      "created_at": "2026-09-07T20:01:03.146Z",
-      "updated_at": "2026-09-07T20:03:22.870Z",
       "workspace_id": "ws-vigilans-main",
       "author_id": "usr-owner-marcus",
       "content": "Huge milestone! All workspace modules and buttons are responsive and operational.",
@@ -957,105 +959,54 @@
       "media_type": null,
       "likes": [
         "usr-owner-marcus"
-      ]
+      ],
+      "created_at": "2026-09-07T20:01:03.146+00:00",
+      "updated_at": "2026-09-07T20:01:03.146+00:00"
+    },
+    {
+      "id": "post-sample-1",
+      "workspace_id": "ws-vigilans-main",
+      "author_id": "usr-owner-marcus",
+      "content": "Great work team on achieving 100% on-time attendance this morning!",
+      "media_url": null,
+      "media_type": null,
+      "likes": [
+        "usr-admin-elena",
+        "usr-staff-sarah",
+        "usr-owner-marcus"
+      ],
+      "created_at": "2026-09-07T19:45:36.320331+00:00",
+      "updated_at": "2026-09-07T19:45:36.320331+00:00"
     }
   ],
   "feed_comments": [
     {
-      "id": "id-1788770592784-6s3is2wqv",
-      "created_at": "2026-09-07T10:20:00.000Z",
-      "updated_at": "2026-09-07T08:43:12.784Z",
-      "post_id": "post-201",
-      "author_id": "usr-staff-alex",
-      "content": "Already on my way to grab the chocolate glazed one! Delicious! 🚀"
-    },
-    {
-      "id": "id-1788770592784-nx882crog",
-      "created_at": "2026-09-07T10:25:00.000Z",
-      "updated_at": "2026-09-07T08:43:12.784Z",
-      "post_id": "post-201",
-      "author_id": "usr-owner-marcus",
-      "content": "Well deserved team! Keep up the tremendous momentum."
-    },
-    {
-      "id": "id-1788794641935-o1xe6u9ez",
-      "created_at": "2026-09-07T15:24:01.935Z",
-      "updated_at": "2026-09-07T15:24:01.935Z",
-      "post_id": "id-1788794641928-x7svbv9mw",
-      "author_id": "usr-owner-marcus",
-      "content": "Awesome job team!"
-    },
-    {
-      "id": "id-1788796689965-nsejd0l1r",
-      "created_at": "2026-09-07T15:58:09.965Z",
-      "updated_at": "2026-09-07T15:58:09.965Z",
-      "post_id": "id-1788794540440-wo74ee4hf",
-      "author_id": "usr-staff-sarah",
-      "content": "Nice"
-    },
-    {
-      "id": "id-1788810154647-dq3104bms",
-      "created_at": "2026-09-07T19:42:34.647Z",
-      "updated_at": "2026-09-07T19:42:34.647Z",
-      "post_id": "id-1788810154633-f5hd1so5q",
-      "author_id": "usr-owner-marcus",
-      "content": "Awesome job team!"
-    },
-    {
-      "id": "id-1788810619444-co0lyfq70",
-      "created_at": "2026-09-07T19:50:19.444Z",
-      "updated_at": "2026-09-07T19:50:19.444Z",
-      "post_id": "id-1788810619413-ztcbc6ots",
-      "author_id": "usr-owner-marcus",
-      "content": "Awesome job team!"
-    },
-    {
-      "id": "id-1788811109120-vrze062qe",
-      "created_at": "2026-09-07T19:58:29.120Z",
-      "updated_at": "2026-09-07T19:58:29.120Z",
-      "post_id": "id-1788810619413-ztcbc6ots",
-      "author_id": "id-1788810780575-1yhuof05v",
-      "content": "Nice"
-    },
-    {
-      "id": "id-1788811263158-xgnq6en9q",
-      "created_at": "2026-09-07T20:01:03.158Z",
-      "updated_at": "2026-09-07T20:01:03.158Z",
-      "post_id": "id-1788811263146-rr9f7st85",
-      "author_id": "usr-owner-marcus",
-      "content": "Awesome job team!"
-    },
-    {
       "id": "id-1788811289828-e2p0nz34k",
-      "created_at": "2026-09-07T20:01:29.828Z",
-      "updated_at": "2026-09-07T20:01:29.828Z",
       "post_id": "id-1788811263146-rr9f7st85",
       "author_id": "usr-owner-marcus",
-      "content": "Test comment 1788811289815"
+      "content": "Test comment 1788811289815",
+      "created_at": "2026-09-07T20:01:29.828+00:00"
     },
     {
       "id": "id-1788811401116-gqlzdz8xr",
-      "created_at": "2026-09-07T20:03:21.116Z",
-      "updated_at": "2026-09-07T20:03:21.116Z",
       "post_id": "id-1788811263146-rr9f7st85",
       "author_id": "usr-owner-marcus",
-      "content": "HI"
+      "content": "HI",
+      "created_at": "2026-09-07T20:03:21.116+00:00"
     },
     {
       "id": "id-1788811410585-kgcwnouku",
-      "created_at": "2026-09-07T20:03:30.585Z",
-      "updated_at": "2026-09-07T20:03:30.585Z",
       "post_id": "id-1788811263146-rr9f7st85",
       "author_id": "usr-owner-marcus",
-      "content": "This is nice"
+      "content": "This is nice",
+      "created_at": "2026-09-07T20:03:30.585+00:00"
     },
     {
       "id": "id-1788811476387-5r2e8iftf",
-      "created_at": "2026-09-07T20:04:36.387Z",
-      "updated_at": "2026-09-07T20:04:36.387Z",
       "post_id": "post-sample-1",
       "author_id": "usr-owner-marcus",
-      "content": "Thank you bassey"
+      "content": "Thank you bassey",
+      "created_at": "2026-09-07T20:04:36.387+00:00"
     }
   ],
   "announcements": [
@@ -1157,14 +1108,15 @@
     },
     {
       "id": "id-1788811263170-6f5jhkwsr",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
       "workspace_id": "ws-vigilans-main",
       "created_by": "usr-owner-marcus",
       "title": "System Operational Notification",
       "content": "Vigilans Workspace attendance engine and communications channels are live.",
       "priority": "high",
-      "attachment_url": null
+      "department": "all",
+      "attachment_url": null,
+      "created_at": "2026-09-07T20:01:03.17+00:00",
+      "updated_at": "2026-09-07T20:01:03.17+00:00"
     }
   ],
   "notifications": [
@@ -1763,304 +1715,268 @@
       "created_at": "2026-09-07T19:42:34.649+00:00"
     },
     {
-      "id": "id-1788811263107-ijyhsl4yo",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-admin-elena",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-ze8ooomjz",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-admin-david",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-86dyytmev",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-sarah",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-cjd135xdu",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-liam",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-vcqzo9guh",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-alex",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-gp3p1cguc",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-maya",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-np8azpt2m",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "id-1788810619187-auhadqvcs",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-yaaju4yv5",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "id-1788810780575-1yhuof05v",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263107-vugvdc4ik",
-      "created_at": "2026-09-07T20:01:03.107Z",
-      "updated_at": "2026-09-07T20:01:03.107Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "id-1788811262988-zxms7pqte",
-      "type": "message",
-      "title": "General Company Channel",
-      "message": "Testing automated button click flow",
-      "related_id": "conv-general",
-      "read": false
-    },
-    {
-      "id": "id-1788811263130-2806nb9vb",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-admin-elena",
-      "type": "meeting",
-      "title": "Meeting Scheduled",
-      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
-      "related_id": "meet-1788811263129",
-      "read": false
-    },
-    {
-      "id": "id-1788811263130-44fq9t64y",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-admin-david",
-      "type": "meeting",
-      "title": "Meeting Scheduled",
-      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
-      "related_id": "meet-1788811263129",
-      "read": false
-    },
-    {
-      "id": "id-1788811263130-h8xo4bprm",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-sarah",
-      "type": "meeting",
-      "title": "Meeting Scheduled",
-      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
-      "related_id": "meet-1788811263129",
-      "read": false
-    },
-    {
       "id": "id-1788811263130-ngnz0twbo",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-staff-liam",
       "type": "meeting",
       "title": "Meeting Scheduled",
       "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
       "related_id": "meet-1788811263129",
-      "read": false
-    },
-    {
-      "id": "id-1788811263130-dhay32xga",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-alex",
-      "type": "meeting",
-      "title": "Meeting Scheduled",
-      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
-      "related_id": "meet-1788811263129",
-      "read": false
-    },
-    {
-      "id": "id-1788811263130-4dp9aok34",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-maya",
-      "type": "meeting",
-      "title": "Meeting Scheduled",
-      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
-      "related_id": "meet-1788811263129",
-      "read": false
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
     },
     {
       "id": "id-1788811263130-u6dg3mbzz",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "id-1788810619187-auhadqvcs",
       "type": "meeting",
       "title": "Meeting Scheduled",
       "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
       "related_id": "meet-1788811263129",
-      "read": false
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
     },
     {
-      "id": "id-1788811263130-ar6g96yn9",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
+      "id": "id-1788811263107-vcqzo9guh",
       "workspace_id": "ws-vigilans-main",
-      "user_id": "id-1788811262988-zxms7pqte",
+      "user_id": "usr-staff-alex",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
+    },
+    {
+      "id": "id-1788811263107-86dyytmev",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-sarah",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
+    },
+    {
+      "id": "id-1788811263107-ijyhsl4yo",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-admin-elena",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
+    },
+    {
+      "id": "id-1788811263130-dhay32xga",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-alex",
       "type": "meeting",
       "title": "Meeting Scheduled",
       "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
       "related_id": "meet-1788811263129",
-      "read": false
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
     },
     {
-      "id": "id-1788811263170-a30dq8vlk",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
+      "id": "id-1788811263130-2806nb9vb",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-admin-elena",
-      "type": "announcement",
-      "title": "Announcement: System Operational Notification",
-      "message": "Vigilans Workspace attendance engine and communications channels are live....",
-      "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
+      "type": "meeting",
+      "title": "Meeting Scheduled",
+      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
+      "related_id": "meet-1788811263129",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
+    },
+    {
+      "id": "id-1788811263107-cjd135xdu",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-liam",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
+    },
+    {
+      "id": "id-1788811263107-np8azpt2m",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "id-1788810619187-auhadqvcs",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
     },
     {
       "id": "id-1788811263170-mwko26ba1",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-admin-david",
       "type": "announcement",
       "title": "Announcement: System Operational Notification",
       "message": "Vigilans Workspace attendance engine and communications channels are live....",
       "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
     },
     {
-      "id": "id-1788811263170-vi1m2iaay",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
+      "id": "id-1788811263107-vugvdc4ik",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "id-1788811262988-zxms7pqte",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
+    },
+    {
+      "id": "id-1788811263130-h8xo4bprm",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-staff-sarah",
-      "type": "announcement",
-      "title": "Announcement: System Operational Notification",
-      "message": "Vigilans Workspace attendance engine and communications channels are live....",
-      "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
-    },
-    {
-      "id": "id-1788811263170-wglx47qdg",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-liam",
-      "type": "announcement",
-      "title": "Announcement: System Operational Notification",
-      "message": "Vigilans Workspace attendance engine and communications channels are live....",
-      "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
-    },
-    {
-      "id": "id-1788811263170-grl7klw2k",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-staff-alex",
-      "type": "announcement",
-      "title": "Announcement: System Operational Notification",
-      "message": "Vigilans Workspace attendance engine and communications channels are live....",
-      "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
+      "type": "meeting",
+      "title": "Meeting Scheduled",
+      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
+      "related_id": "meet-1788811263129",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
     },
     {
       "id": "id-1788811263170-9b5922vh5",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-staff-maya",
       "type": "announcement",
       "title": "Announcement: System Operational Notification",
       "message": "Vigilans Workspace attendance engine and communications channels are live....",
       "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
+    },
+    {
+      "id": "id-1788811263130-4dp9aok34",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-maya",
+      "type": "meeting",
+      "title": "Meeting Scheduled",
+      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
+      "related_id": "meet-1788811263129",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
+    },
+    {
+      "id": "id-1788811263170-wglx47qdg",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-liam",
+      "type": "announcement",
+      "title": "Announcement: System Operational Notification",
+      "message": "Vigilans Workspace attendance engine and communications channels are live....",
+      "related_id": "id-1788811263170-6f5jhkwsr",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
+    },
+    {
+      "id": "id-1788811263130-44fq9t64y",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-admin-david",
+      "type": "meeting",
+      "title": "Meeting Scheduled",
+      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
+      "related_id": "meet-1788811263129",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
+    },
+    {
+      "id": "id-1788811263170-grl7klw2k",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-alex",
+      "type": "announcement",
+      "title": "Announcement: System Operational Notification",
+      "message": "Vigilans Workspace attendance engine and communications channels are live....",
+      "related_id": "id-1788811263170-6f5jhkwsr",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
+    },
+    {
+      "id": "id-1788811263107-ze8ooomjz",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-admin-david",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
+    },
+    {
+      "id": "id-1788811263107-gp3p1cguc",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-maya",
+      "type": "message",
+      "title": "General Company Channel",
+      "message": "Testing automated button click flow",
+      "related_id": "conv-general",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.107+00:00"
+    },
+    {
+      "id": "id-1788811263130-ar6g96yn9",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "id-1788811262988-zxms7pqte",
+      "type": "meeting",
+      "title": "Meeting Scheduled",
+      "message": "Marcus invited you to \"Weekly Executive Punctuality Sync\"",
+      "related_id": "meet-1788811263129",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.13+00:00"
+    },
+    {
+      "id": "id-1788811263170-a30dq8vlk",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-admin-elena",
+      "type": "announcement",
+      "title": "Announcement: System Operational Notification",
+      "message": "Vigilans Workspace attendance engine and communications channels are live....",
+      "related_id": "id-1788811263170-6f5jhkwsr",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
+    },
+    {
+      "id": "id-1788811263170-vi1m2iaay",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-staff-sarah",
+      "type": "announcement",
+      "title": "Announcement: System Operational Notification",
+      "message": "Vigilans Workspace attendance engine and communications channels are live....",
+      "related_id": "id-1788811263170-6f5jhkwsr",
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
     },
     {
       "id": "id-1788811263170-65azb864r",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "id-1788810619187-auhadqvcs",
       "type": "announcement",
       "title": "Announcement: System Operational Notification",
       "message": "Vigilans Workspace attendance engine and communications channels are live....",
       "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
     },
     {
       "id": "id-1788811263170-yszvnwuqi",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "id-1788811262988-zxms7pqte",
       "type": "announcement",
       "title": "Announcement: System Operational Notification",
       "message": "Vigilans Workspace attendance engine and communications channels are live....",
       "related_id": "id-1788811263170-6f5jhkwsr",
-      "read": false
+      "read": false,
+      "created_at": "2026-09-07T20:01:03.17+00:00"
     }
   ],
   "audit_logs": [
@@ -2369,76 +2285,68 @@
       "created_at": "2026-09-07T19:42:34.676+00:00"
     },
     {
-      "id": "id-1788811262988-8a00whwh4",
-      "created_at": "2026-09-07T20:01:02.988Z",
-      "updated_at": "2026-09-07T20:01:02.988Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-owner-marcus",
-      "action": "STAFF_ADDED",
-      "details": "Alex Rivera (Product Designer) was added by Marcus Vance."
-    },
-    {
       "id": "id-1788811263004-vqkuywo1z",
-      "created_at": "2026-09-07T20:01:03.004Z",
-      "updated_at": "2026-09-07T20:01:03.004Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-owner-marcus",
       "action": "STAFF_UPDATED",
-      "details": "Profile of Alex Rivera was updated."
-    },
-    {
-      "id": "id-1788811263008-x21rke0na",
-      "created_at": "2026-09-07T20:01:03.008Z",
-      "updated_at": "2026-09-07T20:01:03.008Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-owner-marcus",
-      "action": "STAFF_UPDATED",
-      "details": "Profile of Alex Rivera was updated."
-    },
-    {
-      "id": "id-1788811263052-kzl8njmg6",
-      "created_at": "2026-09-07T20:01:03.052Z",
-      "updated_at": "2026-09-07T20:01:03.052Z",
-      "workspace_id": "ws-vigilans-main",
-      "user_id": "usr-owner-marcus",
-      "action": "TASK_CREATED",
-      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority."
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T20:01:03.004+00:00"
     },
     {
       "id": "id-1788811263130-dek94oep1",
-      "created_at": "2026-09-07T20:01:03.130Z",
-      "updated_at": "2026-09-07T20:01:03.130Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-owner-marcus",
       "action": "MEETING_SCHEDULED",
-      "details": "Meeting \"Weekly Executive Punctuality Sync\" scheduled for undefined."
+      "details": "Meeting \"Weekly Executive Punctuality Sync\" scheduled for undefined.",
+      "created_at": "2026-09-07T20:01:03.13+00:00"
+    },
+    {
+      "id": "id-1788811263052-kzl8njmg6",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-owner-marcus",
+      "action": "TASK_CREATED",
+      "details": "Task \"Complete UI Interaction Audit\" created with urgent priority.",
+      "created_at": "2026-09-07T20:01:03.052+00:00"
+    },
+    {
+      "id": "id-1788811263008-x21rke0na",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-owner-marcus",
+      "action": "STAFF_UPDATED",
+      "details": "Profile of Alex Rivera was updated.",
+      "created_at": "2026-09-07T20:01:03.008+00:00"
     },
     {
       "id": "id-1788811263170-y0kw8mrpl",
-      "created_at": "2026-09-07T20:01:03.170Z",
-      "updated_at": "2026-09-07T20:01:03.170Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-owner-marcus",
       "action": "ANNOUNCEMENT_POSTED",
-      "details": "Announcement \"System Operational Notification\" was broadcast to the company."
+      "details": "Announcement \"System Operational Notification\" was broadcast to the company.",
+      "created_at": "2026-09-07T20:01:03.17+00:00"
     },
     {
-      "id": "id-1788811263201-yi4786jbb",
-      "created_at": "2026-09-07T20:01:03.201Z",
-      "updated_at": "2026-09-07T20:01:03.201Z",
+      "id": "id-1788811262988-8a00whwh4",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-owner-marcus",
-      "action": "SETTINGS_CHANGED",
-      "details": "Company profile and attendance settings were updated."
+      "action": "STAFF_ADDED",
+      "details": "Alex Rivera (Product Designer) was added by Marcus Vance.",
+      "created_at": "2026-09-07T20:01:02.988+00:00"
     },
     {
       "id": "id-1788811263209-qq21d8bkw",
-      "created_at": "2026-09-07T20:01:03.209Z",
-      "updated_at": "2026-09-07T20:01:03.209Z",
       "workspace_id": "ws-vigilans-main",
       "user_id": "usr-owner-marcus",
       "action": "BARCODE_TOKEN_REGENERATED",
-      "details": "Workspace barcode token regenerated: VIGILANS-HQ-81003"
+      "details": "Workspace barcode token regenerated: VIGILANS-HQ-81003",
+      "created_at": "2026-09-07T20:01:03.209+00:00"
+    },
+    {
+      "id": "id-1788811263201-yi4786jbb",
+      "workspace_id": "ws-vigilans-main",
+      "user_id": "usr-owner-marcus",
+      "action": "SETTINGS_CHANGED",
+      "details": "Company profile and attendance settings were updated.",
+      "created_at": "2026-09-07T20:01:03.201+00:00"
     }
   ]
 }
