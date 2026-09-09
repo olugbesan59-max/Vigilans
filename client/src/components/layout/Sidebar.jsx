@@ -1,47 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import {
-  LayoutDashboard,
-  Users,
-  Clock,
-  CheckSquare,
-  MessageSquare,
-  Video,
-  Rss,
-  Bell,
-  BarChart3,
-  Settings,
-  Shield,
-  LogOut,
-  ChevronRight,
-  UserCheck,
-  Building2,
-  RefreshCw,
-  QrCode
+import React, { useState } from 'react';
+import { 
+  LayoutDashboard, 
+  Users, 
+  Clock, 
+  CheckSquare, 
+  MessageSquare, 
+  Video, 
+  Rss, 
+  Bell, 
+  BarChart3, 
+  Settings, 
+  LogOut, 
+  ShieldCheck, 
+  Copy,
+  Check
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
-import { apiRequest } from '../../api';
 
 export const Sidebar = ({ 
   currentTab, 
   setCurrentTab, 
   activeTab, 
-  onTabChange,
+  onTabChange, 
   onOpenScanner 
 }) => {
   const selectedTab = activeTab || currentTab || 'dashboard';
   const handleTabChange = onTabChange || setCurrentTab || (() => {});
 
-  const { user, workspace, isOwner, isAdmin, logout, switchDemoUser } = useAuth();
-  const { success, error } = useToast();
-  const [demoUsers, setDemoUsers] = useState([]);
-  const [showDemoMenu, setShowDemoMenu] = useState(false);
-
-  useEffect(() => {
-    apiRequest('/auth/demo-users')
-      .then(list => setDemoUsers(list || []))
-      .catch(() => {});
-  }, []);
+  const { user, workspace, isOwner, isAdmin, logout } = useAuth();
+  const { success } = useToast();
+  const [copied, setCopied] = useState(false);
 
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, roles: ['owner', 'admin', 'staff'] },
@@ -59,38 +48,34 @@ export const Sidebar = ({
   const currentRole = user?.system_role || user?.role || 'staff';
   const allowedNav = navItems.filter(item => item.roles.includes(currentRole));
 
-  const handleDemoSwitch = async (demoUser) => {
-    try {
-      await switchDemoUser(demoUser);
-      setShowDemoMenu(false);
-      success(`Switched role to ${demoUser.name} (${demoUser.role_title})`);
-    } catch (e) {
-      error('Failed to switch persona');
-    }
+  const inviteCode = workspace?.invite_code || 'VIGILANS-2026';
+
+  const handleCopyInvite = () => {
+    navigator.clipboard.writeText(inviteCode);
+    setCopied(true);
+    success(`Invite code copied: ${inviteCode}`);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
     <aside className="hidden md:flex flex-col w-20 lg:w-64 bg-slate-900 text-slate-300 h-screen select-none flex-shrink-0 border-r border-slate-800 transition-all duration-200 z-30">
       {/* Brand Header */}
       <div className="p-4 lg:p-5 flex items-center gap-3 border-b border-slate-800/80">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 text-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-indigo-500/20">
-          <Shield size={22} className="stroke-[2.2]" />
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-600/30 flex-shrink-0">
+          <ShieldCheck size={22} className="stroke-[2.5]" />
         </div>
         <div className="hidden lg:flex flex-col min-w-0">
-          <div className="flex items-center gap-1.5">
-            <span className="font-black text-lg tracking-tight text-white">Vigilans</span>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 uppercase tracking-wide">
-              {currentRole}
-            </span>
-          </div>
-          <span className="text-xs text-slate-400 truncate max-w-[150px]" title={workspace?.name || user?.companyName}>
-            {workspace?.name || user?.companyName || 'Vigilans Workspace'}
+          <span className="font-black text-white text-base tracking-tight truncate">
+            {workspace?.name || 'Vigilans Workspace'}
+          </span>
+          <span className="text-[11px] text-slate-400 font-medium tracking-wide truncate">
+            Enterprise Security
           </span>
         </div>
       </div>
 
-      {/* Navigation List */}
-      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1 scrollbar-thin">
+      {/* Navigation Links */}
+      <nav className="flex-1 px-3 py-4 space-y-1.5 overflow-y-auto">
         {allowedNav.map((item) => {
           const Icon = item.icon;
           const isActive = selectedTab === item.id;
@@ -98,17 +83,17 @@ export const Sidebar = ({
             <button
               key={item.id}
               onClick={() => handleTabChange(item.id)}
-              className={`flex items-center gap-3.5 w-full px-3 py-2.5 rounded-xl text-sm font-medium transition-all group ${
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 group cursor-pointer ${
                 isActive
-                  ? 'bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-600/30'
-                  : 'hover:bg-slate-800/60 hover:text-white text-slate-400'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/25'
+                  : 'hover:bg-slate-800/70 text-slate-400 hover:text-slate-100'
               }`}
               title={item.label}
             >
               <Icon
-                size={20}
-                className={`flex-shrink-0 transition-transform duration-150 group-hover:scale-110 ${
-                  isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'
+                size={18}
+                className={`flex-shrink-0 transition-transform duration-200 ${
+                  isActive ? 'scale-110 text-white' : 'text-slate-400 group-hover:text-slate-200'
                 }`}
               />
               <span className="hidden lg:inline truncate">{item.label}</span>
@@ -117,54 +102,26 @@ export const Sidebar = ({
         })}
       </nav>
 
-      {/* Quick 1-Click Role Switcher */}
-      <div className="p-3 border-t border-slate-800 relative">
-        <button
-          onClick={() => setShowDemoMenu(!showDemoMenu)}
-          className="w-full flex items-center justify-center lg:justify-between gap-2 px-2.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 text-xs font-semibold text-indigo-300 border border-indigo-500/20 transition-colors"
-          title="Switch Demo Role"
-        >
-          <div className="flex items-center gap-2 truncate">
-            <RefreshCw size={14} className="text-indigo-400" />
-            <span className="hidden lg:inline truncate">Switch Role (Demo)</span>
+      {/* Invite Code Share Widget */}
+      <div className="p-3 border-t border-slate-800/80">
+        <div className="hidden lg:flex flex-col gap-1.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60 text-xs">
+          <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+            <span>Staff Invite Code</span>
+            <span className="text-[10px] text-indigo-400">Shareable</span>
           </div>
-          <ChevronRight size={14} className="hidden lg:inline text-slate-400" />
-        </button>
-
-        {/* Demo Switcher Popup Drawer */}
-        {showDemoMenu && (
-          <>
-            <div className="fixed inset-0 z-40" onClick={() => setShowDemoMenu(false)} />
-            <div className="absolute bottom-16 left-3 right-3 lg:w-72 z-50 rounded-2xl bg-slate-800 border border-slate-700 shadow-2xl p-2.5 animate-slide-up space-y-1">
-              <div className="px-2 py-1.5 border-b border-slate-700/80 flex items-center justify-between">
-                <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wider">
-                  Test Any Persona
-                </span>
-                <span className="text-[10px] text-indigo-400 font-medium">1-Click Fast Auth</span>
-              </div>
-              <div className="max-h-60 overflow-y-auto space-y-1 py-1">
-                {demoUsers.map(du => (
-                  <button
-                    key={du.id}
-                    onClick={() => handleDemoSwitch(du)}
-                    className={`w-full flex items-center gap-2.5 p-2 rounded-xl text-left transition-colors ${
-                      user?.id === du.id ? 'bg-indigo-600 text-white' : 'hover:bg-slate-700 text-slate-200'
-                    }`}
-                  >
-                    <img src={du.profile_picture} alt="" className="w-6 h-6 rounded-full object-cover" />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs font-semibold truncate">{du.name}</p>
-                      <p className="text-[10px] opacity-75 truncate">{du.role_title}</p>
-                    </div>
-                    <span className="text-[10px] font-bold uppercase opacity-60">
-                      {du.system_role}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </>
-        )}
+          <div className="flex items-center justify-between gap-2 mt-0.5">
+            <span className="font-mono text-indigo-300 font-bold tracking-wider truncate">
+              {inviteCode}
+            </span>
+            <button
+              onClick={handleCopyInvite}
+              className="p-1 rounded-md hover:bg-slate-700 text-slate-400 hover:text-white transition cursor-pointer"
+              title="Copy invite code to clipboard"
+            >
+              {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* User Footer Profile */}
@@ -173,24 +130,24 @@ export const Sidebar = ({
           <img
             src={user?.avatar || user?.profile_picture || `https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100`}
             alt={user?.fullName || user?.first_name}
-            className="w-9 h-9 rounded-xl object-cover border border-slate-700 flex-shrink-0"
+            className="w-8 h-8 rounded-full object-cover ring-2 ring-indigo-500/30 flex-shrink-0"
           />
           <div className="hidden lg:flex flex-col min-w-0">
-            <span className="text-xs font-semibold text-white truncate">
-              {user?.fullName || `${user?.first_name || ''} ${user?.last_name || ''}`}
+            <span className="font-bold text-xs text-white truncate">
+              {user?.fullName || `${user?.first_name || ''} ${user?.last_name || ''}`.trim() || 'Workspace User'}
             </span>
-            <span className="text-[11px] text-slate-400 truncate" title={user?.roleTitle || user?.role_title}>
-              {user?.roleTitle || user?.role_title || 'Staff'}
+            <span className="text-[10px] text-indigo-400 font-semibold uppercase tracking-wider truncate">
+              {user?.roleTitle || user?.role_title || user?.system_role || 'Staff'}
             </span>
           </div>
         </div>
 
         <button
           onClick={logout}
-          className="text-slate-400 hover:text-rose-400 p-1.5 rounded-lg hover:bg-slate-800 transition-colors"
-          title="Log Out"
+          className="p-1.5 rounded-lg hover:bg-rose-500/10 text-slate-400 hover:text-rose-400 transition-colors cursor-pointer"
+          title="Sign Out"
         >
-          <LogOut size={17} />
+          <LogOut size={16} />
         </button>
       </div>
     </aside>

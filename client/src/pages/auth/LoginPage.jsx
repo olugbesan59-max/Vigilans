@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, Lock, Mail, ArrowRight, Sparkles, CheckCircle2, Building2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shield, Lock, Mail, ArrowRight } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
-import { apiRequest } from '../../api';
 
 export const LoginPage = ({ 
   onNavigateToOwnerRegister, 
@@ -10,7 +9,7 @@ export const LoginPage = ({
   onSwitchToOwnerRegister,
   onSwitchToStaffRegister
 }) => {
-  const { login, switchDemoUser } = useAuth();
+  const { login } = useAuth();
   const { error, success } = useToast();
 
   const handleToOwnerRegister = onSwitchToOwnerRegister || onNavigateToOwnerRegister;
@@ -19,33 +18,22 @@ export const LoginPage = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [demoUsers, setDemoUsers] = useState([]);
-
-  useEffect(() => {
-    apiRequest('/auth/demo-users')
-      .then(res => setDemoUsers(res || []))
-      .catch(() => {});
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email.trim() || !password) {
+      error('Please enter both your email and password.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      await login(email, password);
+      await login(email.trim().toLowerCase(), password);
       success('Logged in successfully!');
     } catch (err) {
-      error(err.message);
+      error(err.message || 'Login failed. Please verify your credentials.');
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  const handleQuickLogin = async (demoUser) => {
-    try {
-      await switchDemoUser(demoUser);
-      success(`Logged in as ${demoUser.name} (${demoUser.role_title})`);
-    } catch (err) {
-      error(err.message);
     }
   };
 
@@ -92,9 +80,6 @@ export const LoginPage = ({
                 <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
                   Password
                 </label>
-                <span className="text-xs text-indigo-400 hover:underline cursor-pointer">
-                  Forgot?
-                </span>
               </div>
               <div className="relative">
                 <Lock size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
@@ -112,52 +97,26 @@ export const LoginPage = ({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm transition-all shadow-lg shadow-indigo-600/30 active:scale-[0.98] disabled:opacity-50 mt-2"
+              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm transition-all shadow-lg shadow-indigo-600/30 active:scale-[0.98] disabled:opacity-50 mt-2 cursor-pointer"
             >
               {isSubmitting ? 'Signing in...' : 'Sign In to Workspace'}
             </button>
           </form>
-
-          {/* 1-Click Demo Persona Switcher */}
-          <div className="mt-8 pt-6 border-t border-slate-800/80">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                <Sparkles size={14} className="text-indigo-400" />
-                <span>Instant 1-Click Demo Personas</span>
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {demoUsers.slice(0, 4).map(u => (
-                <button
-                  key={u.id}
-                  onClick={() => handleQuickLogin(u)}
-                  className="flex items-center gap-2 p-2 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-left transition-all hover:border-indigo-500/40 group"
-                >
-                  <img src={u.profile_picture} alt="" className="w-7 h-7 rounded-full object-cover flex-shrink-0" />
-                  <div className="min-w-0">
-                    <p className="font-semibold text-xs text-slate-200 group-hover:text-indigo-300 truncate">{u.name}</p>
-                    <p className="text-[10px] text-slate-400 uppercase font-bold tracking-tight truncate">{u.system_role}</p>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* Onboarding Links */}
           <div className="mt-6 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <button
               type="button"
               onClick={handleToOwnerRegister}
-              className="text-slate-300 hover:text-white font-medium flex items-center gap-1 cursor-pointer"
+              className="text-slate-300 hover:text-white font-medium flex items-center gap-1 cursor-pointer transition-colors"
             >
-              <span>Register as Company Owner</span>
+              <span>Register Company Workspace</span>
               <ArrowRight size={13} />
             </button>
             <button
               type="button"
               onClick={handleToStaffRegister}
-              className="text-indigo-400 hover:text-indigo-300 font-semibold cursor-pointer"
+              className="text-indigo-400 hover:text-indigo-300 font-semibold cursor-pointer transition-colors"
             >
               Join via Staff Invite
             </button>

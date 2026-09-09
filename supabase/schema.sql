@@ -241,7 +241,7 @@ CREATE POLICY "Allow public read/write for service operations" ON notifications 
 CREATE POLICY "Allow public read/write for service operations" ON audit_logs FOR ALL USING (true) WITH CHECK (true);
 
 -- ==============================================================================
--- DEFAULT SEED DATA (Ready-to-Use Company Workspace & Personas)
+-- DEFAULT SEED DATA (Workspace & Owner Account)
 -- ==============================================================================
 INSERT INTO workspaces (
   id, name, logo, description, website, location, invite_code, barcode_token,
@@ -261,22 +261,16 @@ INSERT INTO workspaces (
   'America/Los_Angeles'
 ) ON CONFLICT (id) DO NOTHING;
 
--- Seed Owner & Staff Users (Password for all accounts: Password123!)
+-- Seed Owner Account (Olugbesan59@gmail.com / Succeedjo1)
 INSERT INTO users (
   id, workspace_id, first_name, last_name, email, phone, password, profile_picture,
   role_title, department, system_role, status, bio
 ) VALUES
-  ('usr-owner-marcus', 'ws-vigilans-main', 'Marcus', 'Vance', 'owner@vigilans.com', '+1 (555) 019-2834', 'Password123!', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80', 'Founder & CEO', 'Executive', 'owner', 'active', 'Company Founder'),
-  ('usr-admin-elena', 'ws-vigilans-main', 'Elena', 'Rostova', 'elena.admin@vigilans.com', '+1 (555) 019-5821', 'Password123!', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=250&auto=format&fit=crop&q=80', 'VP of Operations', 'Operations', 'admin', 'active', 'Operations Leadership'),
-  ('usr-admin-david', 'ws-vigilans-main', 'David', 'Kim', 'david.admin@vigilans.com', '+1 (555) 019-9182', 'Password123!', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=250&auto=format&fit=crop&q=80', 'Engineering Director', 'Engineering', 'admin', 'active', 'Technical Lead'),
-  ('usr-staff-sarah', 'ws-vigilans-main', 'Sarah', 'Jenkins', 'sarah.designer@vigilans.com', '+1 (555) 019-3321', 'Password123!', 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=250&auto=format&fit=crop&q=80', 'Senior UI/UX Designer', 'Design', 'staff', 'active', 'Product Design Team'),
-  ('usr-staff-liam', 'ws-vigilans-main', 'Liam', 'Miller', 'liam.designer@vigilans.com', '+1 (555) 019-7744', 'Password123!', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=250&auto=format&fit=crop&q=80', 'Product Designer', 'Design', 'staff', 'active', 'Visual Experience'),
-  ('usr-staff-alex', 'ws-vigilans-main', 'Alex', 'Chen', 'alex.engineer@vigilans.com', '+1 (555) 019-8812', 'Password123!', 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=250&auto=format&fit=crop&q=80', 'Frontend Architect', 'Engineering', 'staff', 'active', 'Web Development'),
-  ('usr-staff-maya', 'ws-vigilans-main', 'Maya', 'Patel', 'maya.engineer@vigilans.com', '+1 (555) 019-4455', 'Password123!', 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=250&auto=format&fit=crop&q=80', 'Full Stack Developer', 'Engineering', 'staff', 'active', 'Core Systems')
+  ('usr-owner-olugbesan', 'ws-vigilans-main', 'Olugbesan', 'Max', 'olugbesan59@gmail.com', '+1 (555) 019-2834', 'Succeedjo1', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=250&auto=format&fit=crop&q=80', 'Founder & CEO', 'Executive', 'owner', 'active', 'Company Founder & CEO')
 ON CONFLICT (id) DO NOTHING;
 
 -- Link owner to workspace
-UPDATE workspaces SET owner_id = 'usr-owner-marcus' WHERE id = 'ws-vigilans-main';
+UPDATE workspaces SET owner_id = 'usr-owner-olugbesan' WHERE id = 'ws-vigilans-main';
 
 -- Seed General Company Chat
 INSERT INTO conversations (id, workspace_id, type, name, participant_ids, last_message)
@@ -285,7 +279,7 @@ VALUES (
   'ws-vigilans-main',
   'group',
   'General Company Channel',
-  '["usr-owner-marcus", "usr-admin-elena", "usr-admin-david", "usr-staff-sarah", "usr-staff-liam", "usr-staff-alex", "usr-staff-maya"]'::jsonb,
+  '["usr-owner-olugbesan"]'::jsonb,
   'Welcome to the official Vigilans workspace channel!'
 ) ON CONFLICT (id) DO NOTHING;
 
@@ -293,18 +287,9 @@ INSERT INTO messages (id, conversation_id, sender_id, content, message_type, dur
 VALUES (
   'msg-welcome-1',
   'conv-general',
-  'usr-owner-marcus',
-  'Welcome team! Barcode check-ins, tasks, and communications channels are live.',
+  'usr-owner-olugbesan',
+  'Welcome to Vigilans! You can register, sign in, and text the app here.',
   'text',
   NULL
 ) ON CONFLICT (id) DO NOTHING;
 
--- Seed Sample Feed Post
-INSERT INTO feed_posts (id, workspace_id, author_id, content, likes)
-VALUES (
-  'post-sample-1',
-  'ws-vigilans-main',
-  'usr-owner-marcus',
-  'Great work team on achieving 100% on-time attendance this morning!',
-  '["usr-admin-elena", "usr-staff-sarah"]'::jsonb
-) ON CONFLICT (id) DO NOTHING;
